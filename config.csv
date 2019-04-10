@@ -1,0 +1,10 @@
+log_file=log_message.log
+storage_path=/storage
+index_file=index.csv
+storage_atime=1521091613 
+storage_mtime=1521091609
+storage_ctime=1521091609
+max_result=200
+max_search_file=100
+error_report_len=10
+file_type=events,logs

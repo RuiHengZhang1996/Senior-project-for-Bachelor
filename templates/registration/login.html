@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block additionalstyles %}{% endblock %}
+{% block content %}
+
+
+<div class="login-page">
+  <div class="form">
+    <h4 class="txt5 m-b-18">
+    Please Log in
+  </h4>
+    <form class="form-signin" role="form" method="post" action=".">
+		{% csrf_token %}
+      <input class="bo-rad-10 sizefull txt12 p-l-20" type="text" name="username" placeholder="user name"/>
+      <input class="bo-rad-10 sizefull txt12 p-l-20" type="password"  name="password" placeholder="password"/>
+       <button type="submit" class="btn3 flex-c size133 txt11 trans-0-4 " value="Submit" >Sign in</button>
+       <p class="message">Trouble login ? Contact <a href="https://www.facebook.com/RuihengZhang1996/">ADMIN </a> for more info</p>
+      <p class="message">Add another user? <a href="/admin">Create an account</a></p>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

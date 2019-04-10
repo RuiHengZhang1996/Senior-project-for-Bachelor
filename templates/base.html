@@ -1,0 +1,393 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lambda Log</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/vendor/slick/slick.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/vendor/lightbox2/css/lightbox.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/static/css/util.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body class="animsition">
+
+  <!-- Header -->
+  <header>
+    <!-- Header desktop -->
+    <div class="wrap-menu-header gradient1 trans-0-4">
+      <div class="container h-full">
+        <div class="wrap_header trans-0-3">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="#">
+              <img src="/static/images/icons/logo.png" alt="IMG-LOGO" data-logofixed="/static/images/icons/logo.png">
+            </a>
+          </div>
+
+          <!-- Menu -->
+          <div class="wrap_menu p-l-45 p-l-0-xl">
+            <nav class="menu">
+              <ul class="main_menu">
+                <li>
+                  <a href="/log_parsing/">Search</a>
+                </li>
+
+                <li>
+                  <a href="/log_parsing/admin">Admin</a>
+                </li>
+
+                <li>
+                  <a href="/log_parsing/about">About</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                  <a href="/log_parsing/logout">Log out</a>
+                </li>
+                {% else %}
+                <li>
+                  <a href="/log_parsing/login">Log in</a>
+                </li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Social -->
+          <div class="social flex-w flex-l-m p-r-20">
+            <a href="https://bitbucket.org/soo_kim/ucd-lambdalog"><i class="fa fa-github" aria-hidden="true"></i></a>
+
+            <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar trans-0-4">
+    <!-- Button Hide sidebar -->
+    <button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
+
+    <!-- - -->
+    <ul class="menu-sidebar p-t-95 p-b-70">
+      <li class="t-center m-b-13">
+        <a href="/log_parsing/" class="txt19">Search</a>
+      </li>
+
+      <li class="t-center m-b-13">
+        <a href="/log_parsing/admin" class="txt19">Admin</a>
+      </li>
+
+      <li class="t-center m-b-13">
+        <a href="/log_parsing/about" class="txt19">About</a>
+      </li>
+
+      
+      {% if user.is_authenticated %}
+      <li class="t-center m-b-13">
+        <a href="/log_parsing/logout" class="txt19">Logout</a>
+      </li>
+      {% else %}
+      <li class="t-center m-b-13">
+        <a href="/log_parsing/login" class="txt19">Login</a>
+      </li>
+      {% endif %}
+      <li class="t-center">
+        <!-- Button3 -->
+        <a href="/log_parsing/" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
+          Start Searching
+        </a>
+      </li>
+    </ul>
+
+    <!-- - -->
+    <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
+      <!-- - -->
+      <h4 class="txt20 m-b-33">
+        More Info
+      </h4>
+
+      <!-- Gallery -->
+      
+    </div>
+  </aside>
+
+
+
+  <!-- Reservation -->
+  <section class="section-reservation bg1-pattern p-t-100 p-b-113">
+    
+
+    {% block content %}{% endblock %} 
+      
+  </section>
+  
+
+  <!-- Footer -->
+  <footer class="bg1">
+    <div class="container p-t-40 p-b-70">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 p-t-50">
+          <!-- - -->
+          <h4 class="txt13 m-b-33">
+            Contact Us
+          </h4>
+
+          <ul class="m-b-70">
+            <li class="txt14 m-b-14">
+              <i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
+              University of Colorado Denver
+            </li>
+
+            <li class="txt14 m-b-14">
+              <i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
+              (720) 592 - 9097
+            </li>
+
+            <li class="txt14 m-b-14">
+              <i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
+              www.ucdenver.edu
+            </li>
+          </ul>
+
+          <!-- - -->
+          
+        </div>
+
+        <div class="col-sm-6 col-md-4 p-t-50">
+          <!-- - -->
+          <h4 class="txt13 m-b-33">
+            Latest twitter
+          </h4>
+
+          <div class="m-b-25">
+            <span class="fs-13 color2 m-r-5">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </span>
+            <a href="#" class="txt15">
+              @Lambdalog
+            </a>
+
+            <p class="txt14 m-b-18">
+              Indexing updated
+              <a href="#" class="txt15">
+                http://127.0.0.1:8000/log_parsing/
+              </a>
+            </br> 15 Mar 2018
+            </p>
+
+            <span class="txt16">
+              
+            </span>
+          </div>
+
+          <div>
+            <span class="fs-13 color2 m-r-5">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </span>
+            <a href="#" class="txt15">
+              @Lambdalog
+            </a>
+
+            <p class="txt14 m-b-18">
+              UI updated
+              <a href="#" class="txt15">
+                http://127.0.0.1:8000/log_parsing/
+              </a>
+            </br> 01 Mar 2018
+            </p>
+            
+          </div>
+          <div>
+            <span class="fs-13 color2 m-r-5">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </span>
+            <a href="#" class="txt15">
+              @Lambdalog
+            </a>
+
+            <p class="txt14 m-b-18">
+              Get the source code from 
+              <a href="https://bitbucket.org/soo_kim/ucd-lambdalog" class="txt15">
+                UCD - Lambdalog
+              </a>
+            </br> 01 Mar 2018
+            </p>
+            
+          </div>
+
+        </div>
+
+        
+
+    <div class="end-footer bg2">
+      <div class="container">
+        <div class="flex-sb-m flex-w p-t-22 p-b-22">
+          
+
+          <div class="txt17 p-r-20 p-t-5 p-b-5">
+            Copyright &copy; 2018 All rights reserved  |  Lambda Log - University of Colorado Denver 2018</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Back to top -->
+  <div class="btn-back-to-top bg0-hov" id="myBtn">
+    <span class="symbol-btn-back-to-top">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+    </span>
+  </div>
+
+  <!-- Container Selection1 -->
+  <div id="dropDownSelect1"></div>
+
+
+
+<!--===============================================================================================-->
+  <script type="text/javascript" src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+  <script type="text/javascript" src="/static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+  <script type="text/javascript" src="/static/vendor/bootstrap/js/popper.js"></script>
+  <script type="text/javascript" src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+  <script type="text/javascript" src="/static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+  <script type="text/javascript" src="/static/vendor/daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="/static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+  <script type="text/javascript" src="/static/vendor/slick/slick.min.js"></script>
+  <script type="text/javascript" src="/static/js/slick-custom.js"></script>
+<!--===============================================================================================-->
+  <script type="text/javascript" src="/static/vendor/parallax100/parallax100.js"></script>
+  <script type="text/javascript">
+        $('.parallax100').parallax100();
+  </script>
+<!--===============================================================================================-->
+  <script type="text/javascript" src="/static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+  <script type="text/javascript" src="/static/vendor/lightbox2/js/lightbox.min.js"></script>
+<!--===============================================================================================-->
+  <script src="/static/js/main.js"></script>
+
+
+    <!-- Essential jQuery Plugins
+    ================================================== -->
+    <!-- Main jQuery -->
+
+    <!-- jquery.fancybox.pack -->
+        <script src="/static/js1/jquery.fancybox.pack.js"></script>
+    <!-- jquery.mixitup.min -->
+        <script src="/static/js1/jquery.mixitup.min.js"></script>
+    <!-- jquery.parallax -->
+        <script src="/static/js1/jquery.parallax-1.1.3.js"></script>
+    <!-- jquery.countTo -->
+        <script src="/static/js1/jquery-countTo.js"></script>
+    <!-- jquery.appear -->
+        <script src="/static/js1/jquery.appear.js"></script>
+    <!-- Contact form validation -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
+    <script src="http://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+    
+    <!-- jquery easing -->
+        <script src="/static/js1/jquery.easing.min.js"></script>
+    <!-- jquery easing -->
+               <script src="/static/js1/wow.min.js"></script>
+   
+    <!-- Custom Functions -->
+        <script src="/static/js1/custom.js"></script>
+    
+    <script type="text/javascript">
+
+
+      function format ( d ) {
+        var str = d[6].replace("<textarea readonly=\"\">","").replace("</textarea>","").replace(/u'/g, '"').replace(/'/g, '"').replace('"{', '{').replace('}"', '}');
+        // console.log("This is string" + str)
+        var json_string = JSON.parse(str);
+        var text= "";
+
+        Object.keys(json_string).forEach(function(key,index) {
+          if (typeof json_string[key] === "object"){
+            text += "<b>" +key + "</b>" + " :" + " {" + "<br>";
+            Object.keys(json_string[key]).forEach(function(sub_key,sub_index) {
+              if (typeof json_string[key][sub_key] === "object"){
+                text += "&emsp;<i>"+"<b>" +sub_key + "</b>" + " :" + " {" + "<br>";
+                Object.keys(json_string[key][sub_key]).forEach(function(sub_key1,sub_index1) {
+                  text += "&emsp; &emsp;&emsp;&emsp; <i>" + sub_key1 + ": <font color=green></i>" +json_string[key][sub_key][sub_key1] + "</font> <br>";
+                })
+              }
+              else{
+              text += "&emsp; <i>" + "<b>" + sub_key + "</b></font>"  + ": <font color=green></i>" +json_string[key][sub_key] + "</font> <br>";
+              }
+            });
+            text += " }" + "<br>";  
+          }
+          else
+          {
+            text += "<b>" + key + "</b></font>" +  ": &emsp;" + "<font color=green><b>" +json_string[key] + "</font><br>";
+          }
+        });
+
+          // `d` is the original data object for the row
+          return '<table class="bg-title-page flex-c-m p-t-5 p-b-15 p-l-15 p-r-15" >'+
+              '<tr> <br>'+
+                  '<td> <h1 class="tit2 t-center" >Full Detail </h1></td>'+
+              '</tr>'+
+              '<tr>'+
+                  '<td>'+ text + '</td>'+
+              '</tr>'+
+          '</table>';
+      }
+
+      $('#main_table tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+
+        var table = $('#main_table').DataTable({ "paging": false, "searching" : false, "retrieve": true});
+
+        var row = table.row( tr );
+ 
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    } );  
+		
+    </script>
+    </body>
+</html>
+
+

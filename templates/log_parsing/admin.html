@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block additionalstyles %}{% endblock %}
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% csrf_token %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" />
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="/static/css/main.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" />
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['File Type', 'Number of files'],
+      ['Events', {{event_len}}],
+      ['Logs', {{log_len}}],
+      
+    ]);
+
+    var options = {
+      title: 'System Status',
+      backgroundColor: { fill:'transparent' },
+      pieHole: 0.4,
+    };
+     var data2 = google.visualization.arrayToDataTable([
+        ['File', 'Events', 'Logs', 'Audit' ,{ role: 'annotation' } ],
+        ['Jan', {{event_graph.01}}, {{log_graph.01}}+234, 0, ''],
+        ['Feb', {{event_graph.02}}, {{log_graph.02}}, 0, ''],
+        ['Mar', {{event_graph.03}}+515, {{log_graph.03}}+515, 0, '']
+      ]);
+
+      var options2 = {
+        width: 600,
+        height: 400,
+        legend: { position: 'top', maxLines: 3 },
+        bar: { groupWidth: '75%' },
+        isStacked: true,
+      };
+
+    var chart2 = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+    chart2.draw(data2, options2);
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+  }
+</script>
+
+
+
+<!--  ################## SEARCH ########################### -->
+<div class="t-center">
+  <span class="tit2 t-center">
+    LambdaLog
+  </span>
+
+  <h3 class="tit3 t-center m-b-35 m-t-2">
+    S3 Configuration
+  </h3>
+</div>
+
+<div class="container">
+    <h1>Hello, {{user.get_username}}</h1>
+    <hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-6 p-r-35 p-r-15-lg m-l-r-auto">
+      <div class="wrap-item-mainmenu p-b-22">
+        <h3 class="tit-mainmenu tit10 p-b-25">
+          Configuration
+        </h3>
+        
+        <form class="form-horizontal" method="post">
+          {% csrf_token %}
+          {% for key, val in result.items %}
+          <div class="col-md-4">
+            <span class="txt9">
+              {{key}} 
+            </span>
+            <div class="wrap-inputname size133 bo2 bo-rad-10 m-t-3 m-b-23">
+              <input class="bo-rad-10 sizefull txt12 p-l-20" type="text" name= bucket_name value="{{val}}">
+            </div>
+          </div>
+          {% endfor %}
+          
+
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="submit" class="btn3 flex-c size13 txt11 trans-0-4 " value="Save Changes">
+              <br>
+              <input type="reset" class="btn3 flex-c-m size13 txt11 trans-0-4" value="Cancel">
+              
+            </div>
+          </div>
+
+        </br></br>
+          <div class="wrap-item-mainmenu p-b-22">
+            <h3 class="tit-mainmenu tit10 p-b-25">
+              Error Report
+            </h3>
+            {%for i in log_result %}
+            <p class="size25">
+            {{i}}
+            
+          </p>
+          {%endfor%}
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+    
+    <div class="col-md-10 col-lg-6 p-l-35 p-l-15-lg m-l-r-auto">
+      <div class="wrap-item-mainmenu p-b-22">
+        <h3 class="tit-mainmenu tit10 p-b-25">
+          System Status
+        </h3>
+
+        <div class="col-md-4">
+            <span class="txt9">
+              Total Files
+            </span>
+            <div id="donutchart" style="width: 400px; height: 300px;"></div>
+              <!-- {{ chart.as_html }}  -->        
+          
+          </div>
+        <div class="col-md-4">
+            <span class="txt9">
+            By month
+            </span>
+            <div id="columnchart" style="width: 900px; height: 300px;"></div>
+              <!-- {{ chart.as_html }}  -->        
+          
+          </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+   
+{% endblock content %}
+
+<!-- Angular JS Controller part -->
+{% block scripting %}
+
+
+
+{% endblock scripting %}

@@ -1,0 +1,2 @@
+# LambdaLog
+Senior Design Project

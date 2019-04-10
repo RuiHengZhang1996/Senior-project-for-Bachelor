@@ -1,0 +1,53 @@
+---
+swagger: "2.0"
+info:
+  version: "2017-11-02T03:56:37Z"
+  title: "UCD-lambda-log"
+host: "bi6tzqfxyc.execute-api.us-east-1.amazonaws.com"
+basePath: "/Staging"
+schemes:
+- "https"
+paths:
+  /:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "current_time"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "search_query"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "start_date"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "end_date"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "search_type"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      security:
+      - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"
